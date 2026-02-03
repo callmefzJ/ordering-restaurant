@@ -363,7 +363,7 @@
         "id": 46,
         "name": "سیب زمینی سرخ کرده",
         "price": 50000,
-        "category": "مخلفات",
+        "category": "متفرقه",
         "image": "images/french-fries.png",
         "status": "active"
     },
@@ -371,7 +371,7 @@
         "id": 47,
         "name": "ماست",
         "price": 25000,
-        "category": "مخلفات",
+        "category": "متفرقه",
         "image": "images/yogurt.png",
         "status": "active"
     },
@@ -379,7 +379,7 @@
         "id": 48,
         "name": "مخلفات",
         "price": 50000,
-        "category": "مخلفات",
+        "category": "متفرقه",
         "image": "images/side-dishes.png",
         "status": "active"
     },
@@ -387,7 +387,7 @@
         "id": 49,
         "name": "ماکارونی و پنیر پیتزا",
         "price": 75000,
-        "category": "مخلفات",
+        "category": "متفرقه",
         "image": "images/cheesepasta.png",
         "status": "active"
     }
