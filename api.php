@@ -1,11 +1,15 @@
 <?php
 header("Content-Type: application/json; charset=utf-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: GET , POST , OPTIONS");
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { exit; }
 
 // اتصال به دیتابیس
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "foodie_db";
+$host = "sql205.infinityfree.com";
+$user = "if0_41063501";
+$pass = "X6GiepGSQIGt2";
+$db   = "if0_41063501_foodie_db";
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
@@ -1579,5 +1583,6 @@ if ($action === "admin_upload_avatar") {
 //  ACTION NOT FOUND
 echo json_encode(["status"=>"error", "message"=>"invalid action"]);
 exit;
+
 
 ?>
