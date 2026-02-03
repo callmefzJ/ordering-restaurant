@@ -2910,7 +2910,7 @@ fetch(`${API_BASE}?action=login`, {
 
     // اگر API جواب نداد → حالت دمو
     if (!Array.isArray(data)) {
-        const res = await fetch("data/menu.json");
+        const res = await fetch("menu.json");
         data = await res.json();
     }
 
@@ -3070,4 +3070,5 @@ loadProductsFromServer();
     }
 
 });
+
 
