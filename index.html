@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رستوران</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar flex between wrapper">
+            <a href="#" class="logo">Foodie.</a>
+
+            <!-- DESKTOP MENU -->
+            <ul class="navlist flex gap-3 nav-links" id="navbar-links">
+                <li>
+                    <a href="#menu-section"><i class="fa-solid fa-utensils"></i> منو</a>
+                </li>
+                <li id="auth-link">
+                    <a href="#" class="sign-in-trigger"><i class="fa-solid fa-user"></i> پروفایل</a>
+                </li>
+                <li>
+                    <a href="#tracking-section"><i class="fa-solid fa-box"></i> پیگیری</a>
+                </li>
+                <li>
+                    <a href="#" class="support-link"><i class="fa-solid fa-headset"></i> پشتیبانی</a>
+                </li>
+            </ul>
+
+            <div class="user-info-display" style="display:none; flex-direction:column; align-items:flex-start;">
+                <span class="user-greeting" style="font-size:1rem; font-weight:600; color:#444;">👋 خوش آمدی، <span
+                        class="user-name"></span>!</span>
+                <span class="user-email" style="font-size:0.9rem; color:#777; margin-top:0.2rem;"></span>
+            </div>
+
+            <div class="desktop-action flex gap-2">
+                <a href="#" class="cart-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-value">0</span>
+                </a>
+                <a id="user-profile-btn" href="#" class="btn sign-in-trigger">
+                    <span>ورود</span>
+                    &nbsp;
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+                <a href="#" class="hamburger">
+                    <i class="fa-solid fa-bars bars"></i>
+                </a>
+            </div>
+
+            <!-- MOBILE MENU -->
+            <ul class="mobile-menu nav-links" id="navbar-links-mobile">
+                <li><a href="#menu-section"><i class="fa-solid fa-utensils"></i> منو</a></li>
+                <li><a href="#" id="open-profile-mobile"><i class="fa-solid fa-user"></i> پروفایل</a></li>
+                <li><a href="#" id="open-orders-mobile"><i class="fa-solid fa-receipt"></i> سفارش‌های من</a></li>
+                <li><a href="#tracking-section"><i class="fa-solid fa-box"></i> پیگیری</a></li>
+                <li><a href="#" class="support-link"><i class="fa-solid fa-circle-info"></i> پشتیبانی</a></li>
+
+                <a href="#" class="btn mobile-sign-in-btn">
+                    <span>ورود</span>
+                    &nbsp;
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </ul>
+
+
+            <!-- <li class="mobile-user-info" style="display:none; text-align:center;">
+                <p class="mobile-user-email" style="font-size:0.95rem; margin-bottom:0.2rem;"></p>
+                <a href="#" class="mobile-edit-profile-link"
+                    style="font-size:0.9rem; color:#007bff; text-decoration:underline;">
+                    ویرایش اطلاعات کاربری
+                </a>
+            </li> -->
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+        <section>
+            <div class="hero-section flex wrapper gap-4">
+                <div class="content">
+                    <h1>
+                        <span>غذا</span>
+                        نوش جان
+                    </h1>
+                    <p class="para">
+                        با عشق،<br>
+                        طعم واقعی غذا را تجربه کنید.
+                    </p>
+                    <div class="flex gap-2">
+                        <a href="#menu-section" class="btn">سفارش خود را ثبت کنید</a>
+
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-google-plus-g"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div class="image-container">
+                    <img src="images/delivery-boy.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrapper p-top">
+                <div class="text-center">
+                    <h5>خدمات ما</h5>
+                    <h2>ما چه خدماتی ارائه می‌دهیم؟</h2>
+                </div>
+
+                <div class="flex text-center mt-4 gap-4">
+                    <div class="service-card">
+                        <div class="images-container">
+                            <img src="images/easy-to-order.png">
+                        </div>
+                        <h3>سفارشی راحت</h3>
+                        <p>تنها در کسری از ثانیه سفارش دهید.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="images-container">
+                            <img src="images/best-quality.png">
+                        </div>
+                        <h3>کیفیتی فوق العاده</h3>
+                        <p>نه تنها به موقع بلکه همراه با کیفتی فوق العاده.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="images-container">
+                            <img src="images/fast-delivery.png">
+                        </div>
+                        <h3>تحویل سریع</h3>
+                        <p>تحویل سریع و به موقع جلوی درب منزل شما.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu-section">
+            <div class="wrapper p-top">
+                <div class="text-center">
+                    <h5>منوی ما</h5>
+                    <h2>پر سفارش ترین ها</h2>
+                </div>
+
+                <div class="swiper">
+                    <div id="menu-list" class="wrapper card-list mt-4">
+                        <!-- <div class="order-card">
+                        <div class="card-image">
+                            <img src="images/burger.png">
+                        </div>
+                        <h4>Double Beef Burger</h4>
+                        <h4 class="price">$200</h4>
+                        <a href="#" class="btn">افزودن</a>
+                    </div> -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <!-- CART TAB -->
+                <div class="cart-tab">
+                    <h3>سبد خرید شما</h3>
+                    <p class="checkout-message">ابتدا وارد حساب کاربری خود شوید!</p>
+
+                    <div class="cart-list">
+                        <!-- <div class="item">
+                            <div class="item-image">
+                                <img src="images/burger.png">
+                            </div>
+                            <div>
+                                <h4>دابل برگر</h4>
+                                <h4 class="item-total">187,000 تومان</h4>
+                            </div>
+                            <div class="flex">
+                                <a href="#" class="quantity-btn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </a>
+                                <h4 class="quantity-value">1</h4>
+                                <a href="#" class="quantity-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </div>
+                        </div> -->
+
+                    </div>
+
+                    <div class="total-container">
+                        <h4>مجموع:</h4>
+                        <h4 class="cart-total">0.0 تومان</h4>
+                    </div>
+
+                    <div class="btn-container flex gap-2">
+                        <a href="#" class="btn close-btn">بستن</a>
+                        <a href="#" class="btn">خرید</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrapper p-top flex gap-3">
+                <div class="image-container">
+                    <img src="images/delivery-boy-with-phone.png">
+                </div>
+
+                <div class="review-container">
+                    <h5>نظر کاربران</h5>
+                    <h2>کی چی می‌گه؟</h2>
+
+
+
+                    <div class="swiper commentSwiper">
+                        <div class="swiper-wrapper mt-4">
+                            <div class="swiper-slide">
+                                <div class="flex gap-2">
+                                    <div class="profile">
+                                        <img src="images/profile1.jpeg">
+                                    </div>
+                                    <div>
+                                        <h4>کاربر 167566</h4>
+                                        <div class="mt-one-half">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="para">سفارشم یک ساعت طول کشید ولی کیفیت و قیمت غذاها خوب بود.
+                                </p>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="flex gap-2">
+                                    <div class="profile">
+                                        <img src="images/profile2.jpeg">
+                                    </div>
+                                    <div>
+                                        <h4>کاربر 34387</h4>
+                                        <div class="mt-one-half">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="para">متاسفانه نوشابه رو فراموش کردن ارسال کنن
+                                    ولی برخورد پیک و پیگیری تحویل سفارش عالی انجام شد.
+                                </p>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="flex gap-2">
+                                    <div class="profile">
+                                        <img src="images/profile3.jpeg">
+                                    </div>
+                                    <div>
+                                        <h4>کاربر 238882</h4>
+                                        <div class="mt-one-half">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="para">تنوع و کیفیت غذاها خوب بود. به موقع هم تحویل داده شد.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex between">
+                            <a href="#" class="arrow" id="next">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="arrow" id="prev">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="add-review-box" class="review-submit-box">
+                        <h3>ارسال نظر شما</h3>
+
+                        <textarea id="review-text" class="review-input" placeholder="نظر خود را بنویسید..."
+                            rows="4"></textarea>
+
+                        <button id="submit-review" class="btn-support-submit">ارسال نظر</button>
+
+                        <p id="review-login-error" class="review-error hidden">
+                            برای ارسال نظر ابتدا باید وارد حساب کاربری شوید.
+                        </p>
+
+                        <p id="review-text-error" class="review-error hidden">
+                            ابتدا نظر خود را وارد کنید.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tracking-section">
+            <div class="wrapper p-top">
+                <div class="text-center">
+                    <h2>وضعیت سفارشم؟</h2>
+                    <p class="para mt-seven">
+                        ابتدا وارد حساب کاربری خود شده و روی سفارش های من کلیک کنید.<br>
+                        یا کد رهگیری خود را در کادر زیر وارد کنید.
+                    </p>
+
+                    <label class="input-container flex order-form tracking-form">
+                        <input type="text" id="tracking-code-input" placeholder="کد رهگیری خود را وارد کنید"
+                            autocomplete="off">
+                        <a href="#" id="tracking-search-btn" class="btn">جستجو</a>
+                    </label>
+                    <p id="tracking-error-msg" class="tracking-error"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="flex wrapper gap-4">
+                <div class="footer-wrapper">
+                    <a href="#" class="logo">Foodie.</a>
+
+                    <p class="mt-one-half">
+                        تمامی حقوق برای وبسایت فودی<br>
+                        محفوظ است.
+                    </p>
+
+                    <div class="flex gap-2 mt-one-half">
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fa-brands fa-google-plus-g"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-visual">
+                    <p class="footer-text">پخته شده با عشق ❤️</p>
+
+                    <div class="footer-gifs">
+                        <video autoplay loop muted playsinline disablepictureinpicture
+                            controlslist="nodownload nofullscreen noremoteplayback" src="videos/chef-salad.mp4"></video>
+                        <video autoplay loop muted playsinline disablepictureinpicture
+                            controlslist="nodownload nofullscreen noremoteplayback" src="videos/chef-pizza.mp4"></video>
+                        <video autoplay loop muted playsinline disablepictureinpicture
+                            controlslist="nodownload nofullscreen noremoteplayback" src="videos/chef-steak.mp4"></video>
+                        <video autoplay loop muted playsinline disablepictureinpicture
+                            controlslist="nodownload nofullscreen noremoteplayback"
+                            src="videos/pizza-maker.mp4"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <a href="#" class="close-modal-btn">&times;</a>
+
+            <div id="initial-view">
+                <h2>ورود</h2>
+                <form id="login-form-default">
+                    <div class="form-group">
+                        <label for="default_email">ایمیل</label>
+                        <input type="text" id="default_username" name="default_username" required>
+                        <small id="loginEmailError" class="error-message"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="default_password">رمز عبور</label>
+                        <input type="password" id="default_password" name="default_password" required>
+                        <small id="loginPasswordError" class="error-message"></small>
+                    </div>
+                    <!-- <p class="forgot-password">
+                        <a href="#" id="forgot-password-btn">فراموشی رمز عبور؟</a>
+                    </p> -->
+                    <button type="submit" class="btn btn-primary">ورود</button>
+                </form>
+
+                <div class="separator-text">
+                    <p>یا</p>
+                </div>
+
+                <div class="action-buttons-group">
+                    <button id="show-signup-btn" class="btn btn-secondary">ثبت نام در سایت</button>
+                    <button id="show-admin-login-btn" class="btn btn-secondary">ورود به عنوان مدیر</button>
+                </div>
+            </div>
+
+            <div id="signup-view" style="display:none;">
+                <div class="long-form-scroll">
+                    <h3>عضویت</h3>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="reg_first_name">نام</label>
+                            <input type="text" id="reg_first_name" name="first_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_last_name">نام خانوادگی</label>
+                            <input type="text" id="reg_last_name" name="last_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_gender">جنسیت</label>
+                            <select id="reg_gender" name="gender" required>
+                                <option value="">انتخاب کنید</option>
+                                <option value="male">مرد</option>
+                                <option value="female">زن</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_email">ایمیل</label>
+                            <input type="email" id="reg_email" name="email" required>
+                            <small id="signupEmailError" class="error-message"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_password">رمز عبور</label>
+                            <input type="password" id="reg_password" name="password" required>
+                            <small id="passwordError" class="error-message"></small>
+                        </div>
+
+                        <div id="success-message" class="success-message">
+                            <p>با موفقیت ثبت نام شدید!</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">ثبت نام</button>
+                        <button type="button" class="btn btn-text back-to-initial">بازگشت</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="admin-view" style="display:none;">
+                <h2>ورود مدیر</h2>
+
+                <form id="admin-login-form">
+
+                    <div class="form-group">
+                        <label for="admin_username">شناسه مدیر</label>
+                        <input type="text" id="admin_username" name="admin_username" required>
+                        <small id="admin-username-error" class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin_password">رمز عبور</label>
+                        <input type="password" id="admin_password" name="admin_password" required>
+                        <small id="admin-password-error" class="error-msg"></small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">ورود</button>
+                    <button type="button" class="btn btn-text back-to-initial">بازگشت</button>
+
+                </form>
+            </div>
+
+            <!-- <div id="reset-view" style="display: none;">
+                <div id="reset-password-view" style="display:none;">
+                    <h3>بازیابی رمز عبور</h3>
+                    <form id="reset-form">
+                        <div class="form-group">
+                            <label>ایمیل</label>
+                            <input type="email" id="reset_email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>رمز جدید</label>
+                            <input type="password" id="new_password" required>
+                            <small id="resetPasswordError" class="error-message"></small>
+                        </div>
+                        <small id="resetPasswordSuccess" class="success-message"></small>
+                        <button type="submit" class="btn btn-primary">ثبت رمز جدید</button>
+                        <button type="button" class="btn btn-text back-to-initial">بازگشت</button>
+                    </form>
+                </div>
+            </div> -->
+        </div>
+        <!-- <div id="reset-password-view" style="display:none;">
+            <h3>بازیابی رمز عبور</h3>
+            <form id="reset-form">
+                <div class="form-group">
+                    <label>ایمیل</label>
+                    <input type="email" id="reset_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>رمز جدید</label>
+                    <input type="password" id="new_password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">ثبت رمز جدید</button>
+                <button type="button" class="btn btn-text back-to-initial">بازگشت</button>
+            </form>
+        </div> -->
+    </div>
+
+    <div class="checkout-modal-overlay">
+        <div class="checkout-modal-content">
+            <!-- <a href="#" class="close-checkout-btn">&times;</a> -->
+            <button type="button" class="back-to-cart-btn"><i class="fa-solid fa-arrow-right"></i><span>بازگشت و ویرایش
+                    سبد خرید</span></button>
+
+            <div class="checkout-layout">
+                <!-- ستون راست: خلاصه سفارش + مجموع‌ها -->
+                <div class="checkout-right">
+                    <div class="order-summary-container">
+                        <h3>جزئیات سفارش</h3>
+                        <ul id="order-summary-list"></ul>
+                    </div>
+                    <div class="order-summary-totals">
+                        <div class="summary-row">
+                            <span>مجموع:</span>
+                            <span id="order-subtotal">۰ تومان</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>هزینه ارسال:</span>
+                            <span id="order-delivery">۶۰,۰۰۰ تومان</span>
+                        </div>
+                        <div class="summary-row summary-payable">
+                            <span>قابل پرداخت:</span>
+                            <span id="order-payable">۰ تومان</span>
+                        </div>
+                    </div>
+                    <div class="order-actions">
+                        <button type="button" id="submit-order-btn" class="btn btn-primary">
+                            ثبت
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ستون چپ: آدرس + پرداخت + کد تخفیف -->
+                <div class="checkout-left">
+                    <!-- آدرس شما (همون قبلی) -->
+                    <section class="address-section">
+                        <div id="address-display" class="hidden">
+                            <div class="address-header">
+                                <h4>آدرس شما:</h4>
+                                <div class="address-actions">
+                                    <span id="add-new-address-link" class="address-action">➕ افزودن آدرس جدید</span>
+                                </div>
+                            </div>
+                            <ul id="user-address-list" class="address-list"></ul>
+                        </div>
+
+                        <div id="add-address-wrapper">
+                            <span id="add-address-link" class="address-action">➕ افزودن آدرس جدید</span>
+                        </div>
+                    </section>
+
+                    <!-- روش پرداخت -->
+                    <div class="card payment-card">
+                        <h3>روش پرداخت</h3>
+                        <div class="payment-method">
+                            <div class="payment-title">پرداخت آنلاین</div>
+                            <div class="payment-desc">آسان پرداخت</div>
+                        </div>
+                    </div>
+
+                    <!-- کد تخفیف -->
+                    <div class="card coupon-card">
+                        <h3>کد تخفیف</h3>
+                        <div class="coupon-row">
+                            <input type="text" id="discount-code-input" class="coupon-input"
+                                placeholder="اگر کد تخفیف دارید وارد کنید" />
+                        </div>
+                        <div id="discount-message" class="discount-message"></div>
+                    </div>
+
+                    <!-- پیام موفقیت و دکمه‌ها -->
+                    <div class="order-success-message">
+                        <p>سفارش شما با موفقیت ثبت شد!</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="modal-overlay my-orders-overlay">
+        <div class="modal-content my-orders-content">
+            <a href="#" class="my-orders-close-btn">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+
+            <h2 id="myOrdersTitle">پروفایل کاربری</h2>
+
+            <div class="user-info-section">
+                <h3>اطلاعات کاربری</h3>
+                <form id="user-info-form">
+                    <div class="user-form-row">
+                        <div class="user-field half">
+                            <label for="userFirstName">نام:</label>
+                            <input type="text" id="userFirstName" placeholder="نام شما">
+                        </div>
+                        <div class="user-field half">
+                            <label for="userLastName">نام خانوادگی:</label>
+                            <input type="text" id="userLastName" placeholder="نام خانوادگی شما">
+                        </div>
+                    </div>
+
+                    <div class="user-form-row">
+                        <div class="user-field half">
+                            <label for="userGender">جنسیت:</label>
+                            <select id="userGender">
+                                <option value="">انتخاب کنید</option>
+                                <option value="male">مرد</option>
+                                <option value="female">زن</option>
+                            </select>
+
+                            <label for="userPhoneProfile" style="margin-top:0.5rem;">شماره تماس:</label>
+                            <input type="text" id="userPhoneProfile" placeholder="09...">
+                        </div>
+
+                        <div class="user-field half">
+                            <label for="userEmail">ایمیل:</label>
+                            <input type="email" id="userEmail" placeholder="ایمیل شما">
+                        </div>
+                    </div>
+
+                    <div class="user-form-row">
+                        <div class="user-field full">
+                            <label>آدرس‌ها:</label>
+
+                            <section class="address-section profile-address-section">
+                                <div id="profile-address-display" class="hidden">
+                                    <div class="address-header">
+                                        <h4>آدرس‌های شما:</h4>
+                                        <div class="address-actions">
+                                            <span id="profile-add-new-address" class="address-action">
+                                                ➕ افزودن آدرس جدید
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- لیست آدرس‌ها در پروفایل-->
+                                    <ul id="profile-address-list" class="address-list"></ul>
+                                </div>
+
+                                <!-- وقتی هنوز هیچ آدرسی ثبت نشده -->
+                                <div id="profile-add-address-wrapper">
+                                    <span id="profile-add-address" class="address-action">
+                                        ➕ افزودن آدرس جدید
+                                    </span>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-save">ذخیره تغییرات</button>
+                </form>
+            </div>
+
+            <!-- بخش نمایش نظرات ارسال‌شده کاربر -->
+            <div class="user-reviews-section hidden-section">
+                <h3>نظرات ارسال‌ شده شما</h3>
+                <div id="user-reviews-list"></div>
+            </div>
+
+            <hr>
+
+            <div class="order-history-section">
+                <h3>تاریخچه سفارش‌ها</h3>
+                <table id="orderHistoryTable">
+                    <thead>
+                        <tr>
+                            <th>شماره</th>
+                            <th>تاریخ</th>
+                            <th>کد رهگیری</th>
+                            <th>مبلغ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderHistoryList">
+                        <!-- ردیف‌ها به صورت داینامیک با JS اضافه می‌شن -->
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+
+            <div class="latest-order-section">
+                <h3>وضعیت آخرین سفارش</h3>
+                <div id="latestOrderDetails" class="order-details-container">
+                </div>
+                <div id="orderStatusDisplay" class="order-status-box">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Address Modal -->
+    <div id="confirm-delete-modal" class="modal hidden">
+        <div class="modal-content small-modal">
+            <span id="confirm-delete-close" class="modal-close"></span>
+            <h3>حذف آدرس</h3>
+            <p>آیا از حذف این آدرس مطمئن هستید؟</p>
+            <div class="modal-actions">
+                <button id="confirm-delete-cancel" type="button" class="btn btn-secondary">
+                    انصراف
+                </button>
+                <button id="confirm-delete-ok" type="button" class="btn btn-danger">
+                    بله، حذف کن
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال تأیید ثبت سفارش -->
+    <div class="small-modal-overlay" id="order-confirmation-modal">
+        <div class="small-modal-two">
+            <p class="small-modal-title">سفارش شما ثبت شد</p>
+            <p class="small-modal-text">
+                سفارش شما ثبت شد و در اسرع وقت تحویل داده می‌شود.
+            </p>
+            <p class="small-modal-tracking">
+                کد رهگیری:
+                <span id="confirmation-tracking-code"></span>
+            </p>
+            <button type="button" id="confirmation-ok-btn" class="btn">
+                باشه
+            </button>
+        </div>
+    </div>
+
+    <!-- صفحه افزودن آدرس جدید -->
+    <div id="address-map-page" class="hidden">
+        <div class="map-container">
+            <a href="#" id="close-map" class="close-map-btn">&times;</a>
+            <div class="map-section">
+                <input type="text" id="map-search" placeholder="🔍 جستجوی شهر یا منطقه..." />
+                <div id="map"></div>
+            </div>
+            <div class="form-section">
+                <h3>ثبت آدرس جدید</h3>
+                <form id="address-form">
+                    <label for="address-location">نشانی</label>
+                    <input type="text" id="address-location" placeholder="با انتخاب روی نقشه پر می‌شود" />
+                    <small class="field-error" id="error-address-location"></small>
+
+                    <label for="address-title">عنوان آدرس</label>
+                    <input type="text" id="address-title" placeholder="مثل خانه یا محل کار" />
+                    <small class="field-error" id="error-address-title"></small>
+
+                    <label for="address-details">آدرس کامل</label>
+                    <textarea id="address-details" rows="3" placeholder="مثال: پلاک 735، واحد 5"></textarea>
+                    <small class="field-error" id="error-address-details"></small>
+
+                    <label for="address-phone">شماره تماس</label>
+                    <input type="text" id="address-phone" placeholder="09..." />
+                    <small class="field-error" id="error-address-phone"></small>
+
+                    <button type="button" id="save-address-btn">📍 ثبت آدرس</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال پشتیبانی -->
+    <div id="support-modal" class="hidden">
+        <div class="support-modal-content">
+            <span id="support-modal-close" class="modal-close">&times;</span>
+            <h2>درخواست پشتیبانی</h2>
+
+            <!-- دکمه برای رفتن به تاریخچه -->
+            <div class="support-history-trigger">
+                <button id="open-support-history" class="btn-secondary support-btn">
+                    مشاهده درخواست‌های قبلی
+                </button>
+            </div>
+
+            <!-- مودال تاریخچه -->
+            <div id="support-tickets-modal" class="modal-overlay hidden">
+                <div class="modal-content support-tickets-box">
+                    <a class="close-modal-btn" id="close-support-tickets">&times;</a>
+
+                    <h2>درخواست‌های قبلی</h2>
+
+                    <button id="delete-selected-tickets" class="btn-secondary delete-btn hidden">
+                        حذف موارد انتخاب شده
+                    </button>
+
+                    <div class="long-form-scroll">
+                        <ul id="support-tickets-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="support-divider" />
+
+            <form id="support-form">
+                <!-- عنوان درخواست -->
+                <div class="support-field">
+                    <label for="support-title">عنوان درخواست</label>
+                    <input type="text" id="support-title" placeholder="مثال: مشکل در ثبت سفارش" />
+                    <small id="support-title-error" class="support-error"></small>
+                </div>
+
+                <!-- متن درخواست -->
+                <div class="support-field">
+                    <label for="support-message">متن درخواست</label>
+                    <textarea id="support-message" rows="5" placeholder="لطفاً توضیحات خود را بنویسید..."></textarea>
+                    <small id="support-message-error" class="support-error"></small>
+                </div>
+
+                <!-- بارگذاری فایل -->
+                <div class="support-field">
+                    <label>بارگذاری فایل (اختیاری)</label>
+                    <div class="support-file-wrapper">
+                        <span class="support-file-name">فایلی انتخاب نشده است</span>
+
+                        <!-- دکمه + در انتهای فیلد سمت چپ -->
+                        <button type="button" id="support-file-trigger" class="support-file-btn">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+
+                        <input type="file" id="support-file" class="support-file-input" multiple />
+                    </div>
+                </div>
+
+                <!-- دکمه ثبت (مجزا از بقیه) -->
+                <div class="support-actions">
+                    <button type="button" id="support-submit-btn" class="btn-support-submit">
+                        ثبت درخواست
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- مودال هشدار ورود برای پشتیبانی -->
+    <div id="support-auth-modal" class="support-auth-overlay hidden">
+        <div class="support-auth-modal-box">
+            <p class="support-auth-text">
+                ابتدا وارد حساب کاربری خود شده یا ثبت نام کنید.
+            </p>
+            <div class="support-auth-actions">
+                <button id="support-auth-confirm" class="btn-support-auth-confirm">
+                    تایید
+                </button>
+                <button id="support-auth-cancel" class="btn-support-auth-cancel">
+                    انصراف
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال موفقیت پشتیبانی -->
+    <div class="small-modal-overlay hidden" id="support-success-modal">
+        <div class="small-modal-two">
+            <p class="small-modal-title">درخواست ثبت شد</p>
+            <p class="small-modal-text">درخواست شما در اسرع وقت پاسخ داده خواهد شد.</p>
+            <button type="button" id="support-success-ok" class="btn-support-submit">باشه</button>
+        </div>
+    </div>
+
+    <!-- مودال موفقیت ارسال نظر -->
+    <div id="review-success-modal" class="modal-overlay hidden">
+        <div class="modal-content small-modal-three">
+            <p>نظر شما پس از تایید مدیر ثبت خواهد شد.</p>
+
+            <button id="review-success-ok" class="btn-support-submit">
+                باشه
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jalaali-js/dist/jalaali.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل ادمین</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-date@0.1.8/dist/persian-date.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/js/persian-datepicker.js"></script>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/css/persian-datepicker.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/persian-date/dist/persian-date.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/js/persian-datepicker.min.js"></script>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="css/Admin.css">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="index.html" target="_blank">
+                        <span class="icon">
+                            <ion-icon name="fast-food-outline"></ion-icon>
+                        </span>
+                        <span class="title">.Foodi</span>
+                    </a>
+                </li>
+
+                <li data-page="dashboard">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">داشبورد</span>
+                    </a>
+                </li>
+
+                <li data-page="orders">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </span>
+                        <span class="title">لیست سفارش ها</span>
+                    </a>
+                </li>
+
+                <li data-page="products">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="pricetags-outline"></ion-icon>
+                        </span>
+                        <span class="title">لیست محصولات</span>
+                    </a>
+                </li>
+
+                <li data-page="customers">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">مشتریان</span>
+                    </a>
+                </li>
+
+                <li data-page="messages">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                        <span class="title">نظرات</span>
+                    </a>
+                </li>
+
+                <li data-page="tickets">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="list-outline"></ion-icon>
+                        </span>
+                        <span class="title">پیام ها</span>
+                    </a>
+                </li>
+
+                <li data-page="settings">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">تنظیمات</span>
+                    </a>
+                </li>
+
+                <li data-page="logout">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">خروج</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" id="admin-search-input" placeholder="جستجو">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img class="user-avatar" src="assets/images/user.png">
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">1,504</div>
+                        <div class="cardName">بازدید روزانه</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">80</div>
+                        <div class="cardName">فروش</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">284</div>
+                        <div class="cardName">نظرات</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">7,842</div>
+                        <div class="cardName">درآمد</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cash-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>سفارشات</h2>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>سفارش</td>
+                                <td>قیمت</td>
+                                <td>پرداخت</td>
+                                <td>وضغیت</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <!-- ================= New Customers ================ -->
+                <div class="dashboardCustomers">
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-modal-overlay" id="order-modal">
+        <div class="order-modal-box modern-modal">
+
+            <span class="order-modal-close" id="order-modal-close">&times;</span>
+
+            <h2 class="modal-title">جزئیات سفارش</h2>
+
+            <div class="order-modal-content-area">
+
+                <!-- اطلاعات مشتری -->
+                <div class="modal-section">
+                    <h3>اطلاعات مشتری</h3>
+                    <div class="section-box">
+                        <p><strong>نام و نام خانوادگی:</strong> <span id="om-customer-name"></span></p>
+                        <p><strong>شماره تماس:</strong> <span id="om-customer-phone"></span></p>
+                        <p><strong>آدرس:</strong> <span id="om-customer-address"></span></p>
+                    </div>
+                </div>
+
+                <!-- آیتم‌های سفارش -->
+                <div class="modal-section">
+                    <h3>اقلام سفارش</h3>
+                    <div id="om-items" class="order-items-list section-box"></div>
+                </div>
+
+                <!-- اطلاعات قیمت -->
+                <div class="modal-section">
+                    <h3>اطلاعات قیمت</h3>
+                    <div class="section-box">
+                        <p><strong>کد تخفیف:</strong> <span id="om-discount"></span></p>
+                        <p><strong>قیمت کل:</strong> <span id="om-total"></span></p>
+                    </div>
+                </div>
+
+                <!-- زمان تحویل -->
+                <div class="modal-section">
+                    <h3>حداکثر زمان ارسال</h3>
+                    <div class="section-box">
+                        <input type="text" id="om-delivery-time" placeholder="مثال: ۳۰ دقیقه" class="delivery-input" />
+                    </div>
+                </div>
+
+                <!-- دلیل رد -->
+                <div id="reject-reason-box" class="reject-box" style="display:none;">
+                    <h3>دلیل رد سفارش</h3>
+                    <textarea id="reject-reason-text" placeholder="مثال: ..."></textarea>
+                    <button id="reject-save-btn" class="reject-btn">ثبت دلیل رد سفارش</button>
+                </div>
+
+            </div>
+
+            <!-- دکمه‌ها (ثابت پایین مودال) -->
+            <div class="order-modal-actions">
+                <button id="om-approve" class="approve-btn">تأیید سفارش</button>
+                <button id="om-reject" class="reject-btn">رد سفارش</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="reason-modal-overlay" id="reason-modal">
+        <div class="reason-modal-box">
+            <span class="reason-modal-close" id="reason-modal-close">&times;</span>
+
+            <h3>دلیل رد سفارش</h3>
+            <div id="reason-modal-text" class="reason-text-box"></div>
+        </div>
+    </div>
+
+    <div id="product-modal" class="product-modal">
+        <div class="product-modal-content">
+            <span id="product-modal-close" class="product-modal-close">&times;</span>
+
+            <h2>ویرایش محصول</h2>
+
+            <div class="pm-preview-card">
+                <img id="product-image" src="images/default-food.png" alt="عکس غذا">
+
+                <div class="pm-preview-info">
+                    <h3 id="product-preview-name">نام محصول</h3>
+                    <p id="product-preview-price">0 تومان</p>
+                    <p id="product-preview-desc">—</p>
+                </div>
+            </div>
+
+            <div class="pm-field">
+                <label>تغییر تصویر:</label>
+                <input type="file" id="product-image-input" accept="image/*">
+            </div>
+            <small class="pm-error" id="pm-image-error"></small>
+
+            <div class="pm-field">
+                <label>نام محصول:</label>
+                <input type="text" id="pm-name">
+            </div>
+            <small class="pm-error" id="pm-name-error"></small>
+
+            <div class="pm-field">
+                <label>قیمت (تومان):</label>
+                <input type="number" id="pm-price">
+            </div>
+            <small class="pm-error" id="pm-price-error"></small>
+
+            <div class="pm-field">
+                <label>دسته:</label>
+                <select id="pm-category">
+                    <option value="پر سفارش‌ترین‌ ها">پر سفارش‌ترین‌ ها</option>
+                    <option value="همبرگر">همبرگر</option>
+                    <option value="پیتزا">پیتزا</option>
+                    <option value="سوخاری">سوخاری</option>
+                    <option value="ساندویچ">ساندویچ</option>
+                    <option value="پاستا">پاستا</option>
+                    <option value="غذاهای ایرانی">غذاهای ایرانی</option>
+                    <option value="سالاد">سالاد</option>
+                    <option value="نوشیدنی">نوشیدنی</option>
+                    <option value="متفرقه">متفرقه</option>
+                </select>
+            </div>
+            <small class="pm-error" id="pm-category-error"></small>
+
+            <div class="pm-field">
+                <label>توضیحات:</label>
+                <textarea id="pm-desc" rows="3"></textarea>
+            </div>
+
+            <div class="pm-buttons">
+                <button class="pm-disable-btn">غیرفعال</button>
+                <button class="pm-enable-btn" style="display:none;">فعال</button>
+                <button class="pm-update-btn">بروزرسانی</button>
+                <button class="pm-disable-permanent-btn btn danger">غیرفعال دائمی</button>
+                <button id="pm-add-btn" class="btn new-add-btn" style="display:none; background: #F2BD12;">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="address-modal" class="modal-overlay hidden">
+        <div class="modal-container address-modal">
+            <span class="close-modal" id="address-modal-close">&times;</span>
+
+            <h2 class="modal-title">آدرس‌های مشتری</h2>
+
+            <div id="address-modal-content" class="address-modal-content">
+             
+            </div>
+        </div>
+    </div>
+
+    <div id="orders-modal" class="modal-overlay hidden">
+        <div class="modal-container orders-modal">
+            <span class="close-modal" id="orders-modal-close">&times;</span>
+
+            <h2 class="modal-title">سفارش‌های مشتری</h2>
+
+            <div id="orders-modal-content" class="orders-modal-content">
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Modal for Messages ===== -->
+    <div id="message-modal" class="modal-overlay hidden">
+        <div class="modal-container message-modal">
+
+            <span class="close-modal" id="message-modal-close">&times;</span>
+
+            <h2 class="modal-title">جزئیات پیام</h2>
+
+            <div id="msg-full-text" class="msg-full-text"></div>
+
+            <label class="modal-label">پاسخ مدیر:</label>
+            <textarea id="msg-reply-input" class="modal-textarea" placeholder="پاسخ خود را بنویسید..."></textarea>
+
+            <button id="msg-confirm-btn" class="btn confirm-btn">تایید</button>
+
+        </div>
+    </div>
+
+    <div id="ticket-modal" class="modal-overlay">
+
+        <div class="modal-container ticket-modal">
+
+            <span id="ticket-modal-close" class="close-modal">&times;</span>
+
+            <h2 class="modal-title">جزئیات تیکت</h2>
+
+            <div class="ticket-full-text">
+                <label>عنوان:</label>
+                <div id="ticket-full-title" class="modal-box"></div>
+
+                <label>متن:</label>
+                <div id="ticket-full-message" class="modal-box"></div>
+
+                <label>پاسخ مدیر:</label>
+                <textarea id="ticket-reply-input" class="modal-textarea"
+                    placeholder="پاسخ خود را بنویسید..."></textarea>
+            </div>
+
+            <button id="ticket-confirm-btn" class="btn confirm-btn">تایید</button>
+
+        </div>
+
+    </div>
+
+    <!-- Role Modal -->
+    <div id="role-modal" class="pm-modal">
+        <div class="pm-content role-modal-content">
+
+            <span class="close-role-modal">&times;</span>
+
+            <h2 class="pm-title">مدیریت نقش کاربر</h2>
+
+            <div class="pm-field">
+                <label>نام و نام خانوادگی:</label>
+                <input type="text" id="role-fullname" disabled>
+            </div>
+
+            <div class="pm-field">
+                <label>ایمیل:</label>
+                <input type="text" id="role-email" disabled>
+            </div>
+
+            <div class="pm-field">
+                <label>سطح دسترسی:</label>
+                <select id="role-select">
+                    <option value="user">کاربر عادی</option>
+                    <option value="orders">ادمین سفارشات</option>
+                    <option value="products">ادمین محصولات</option>
+                    <option value="support">ادمین پشتیبانی</option>
+                    <option value="super">مدیر اصلی</option>
+                </select>
+            </div>
+
+            <div class="pm-field">
+                <label>شناسه ورود:</label>
+                <input type="text" id="role-username">
+                <small id="role-username-error" class="error-text"></small>
+            </div>
+
+            <div class="pm-field">
+                <label>رمز عبور:</label>
+                <input type="password" id="role-password">
+                <small id="role-password-error" class="error-text"></small>
+            </div>
+
+            <button id="role-save-btn" class="pm-confirm-btn">ثبت تغییرات</button>
+
+        </div>
+    </div>
+
+    <!-- ======== Logout Confirm Modal ======== -->
+    <div id="logout-modal" class="logout-modal-overlay">
+        <div class="logout-modal-box">
+            <h2>آیا مطمئن هستید؟</h2>
+            <p>می‌خواهید از پنل ادمین خارج شوید؟</p>
+
+            <div class="logout-actions">
+                <button id="logout-yes" class="logout-btn yes">بله</button>
+                <button id="logout-no" class="logout-btn no">خیر</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-date/dist/persian-date.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/js/persian-datepicker.js"></script>
+    <script src="js/admin.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
