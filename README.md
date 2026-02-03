@@ -8,6 +8,7 @@ A simple restaurant ordering project.
 ---
 
 ## Live Demo (Frontend Only)
+https://callmefzj.github.io/ordering-restaurant/
 This demo uses a static JSON menu (no PHP / no database online).
 
 - Menu source: menu.json
