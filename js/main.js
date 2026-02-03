@@ -1580,11 +1580,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const res = await fetch(`${API_BASE}?action=login`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password })
-                });
+                const body = new URLSearchParams();
+body.append("email", email);
+body.append("password", password);
+
+fetch(`${API_BASE}?action=login`, {
+  method: "POST",
+  body: body
+})
+.then(r => r.json())
+.then(data => {
+  console.log("LOGIN RESULT:", data);
+})
+.catch(err => {
+  console.error("LOGIN ERROR:", err);
+});
 
                 const data = await res.json();
 
@@ -3054,4 +3064,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 });
