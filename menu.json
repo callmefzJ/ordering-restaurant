@@ -4,7 +4,7 @@
         "name": "پیتزا مخصوص",
         "price": 180000,
         "category": "فست فود",
-        "image": "images/pizza.jpg",
+        "image": "images/pizza.png",
         "status": "active",
     }
 ]
