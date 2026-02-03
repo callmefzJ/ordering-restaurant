@@ -2886,62 +2886,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadProductsFromServer() {
-        try {
-            const res = await fetch("api.php?action=get_products");
-            const data = await res.json();
+    let data = null;
 
-            if (Array.isArray(data)) {
-                productList = data;
-
-                // دسته‌بندی اولیه
-                const categoryOrder = [
-                    "پر سفارش‌ترین ها",
-                    "همبرگر",
-                    "پیتزا",
-                    "پاستا",
-                    "سوخاری",
-                    "ساندویچ",
-                    "غذاهای ایرانی",
-                    "سالاد",
-                    "نوشیدنی",
-                    "متفرقه"
-                ];
-
-                // مرتب‌سازی بر اساس دسته و id
-                productList.sort((a, b) => {
-                    const catA = categoryOrder.indexOf(a.category);
-                    const catB = categoryOrder.indexOf(b.category);
-
-                    if (catA !== catB) return catA - catB;
-                    return a.id - b.id;
-                });
-            } else {
-                productList = [];
-            }
-
-            showAllInOneSwiper();
-
-            const categories = {};
-            productList.forEach(item => {
-                if (!categories[item.category]) {
-                    categories[item.category] = [];
-                }
-                categories[item.category].push(item);
-            });
-            window.globalCategories = categories;
-
-            updateNavbar();
-
-            setTimeout(() => {
-                attachMenuItemClickListeners();
-            }, 300);
-
-        } catch (err) {
-            console.error("خطا در گرفتن محصولات:", err);
+    // تلاش برای گرفتن از API (لوکال / WAMP)
+    try {
+        const res = await fetch("api.php?action=get_products");
+        if (res.ok) {
+            data = await res.json();
         }
+    } catch (e) {
+     
     }
 
-    loadProductsFromServer();
+    if (!Array.isArray(data)) {
+        const res = await fetch("data/menu.json");
+        data = await res.json();
+    }
+
+    productList = data;
+
+    const categoryOrder = [
+        "پر سفارش‌ترین ها",
+        "همبرگر",
+        "پیتزا",
+        "پاستا",
+        "سوخاری",
+        "ساندویچ",
+        "غذاهای ایرانی",
+        "سالاد",
+        "نوشیدنی",
+        "متفرقه"
+    ];
+
+    productList.sort((a, b) => {
+        const catA = categoryOrder.indexOf(a.category);
+        const catB = categoryOrder.indexOf(b.category);
+        if (catA !== catB) return catA - catB;
+        return a.id - b.id;
+    });
+
+    showAllInOneSwiper();
+
+    const categories = {};
+    productList.forEach(item => {
+        if (!categories[item.category]) {
+            categories[item.category] = [];
+        }
+        categories[item.category].push(item);
+    });
+
+    window.globalCategories = categories;
+    updateNavbar();
+
+    setTimeout(() => {
+        attachMenuItemClickListeners();
+    }, 300);
+}
+
+loadProductsFromServer();
 
     const switchView = (targetView) => {
         initialView.style.display = 'none';
@@ -3054,4 +3056,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 });
