@@ -136,14 +136,6 @@
         "status": "active"
     },
     {
-        "id": 17,
-        "name": "لازانیا",
-        "price": 150000,
-        "category": "پاستا",
-        "image": "images/lasagna.png",
-        "status": "active"
-    },
-    {
         "id": 18,
         "name": "مرغ سوخاری",
         "price": 140000,
@@ -297,6 +289,14 @@
     },
     {
         "id": 37,
+        "name": "دلمه",
+        "price": 85000,
+        "category": "غذاهای ایرانی",
+        "image": "images/dolme.png",
+        "status": "active"
+    },
+    {
+        "id": 38,
         "name": "سالاد میگو",
         "price": 135000,
         "category": "سالاد",
@@ -304,7 +304,7 @@
         "status": "active"
     },
     {
-        "id": 38,
+        "id": 39,
         "name": "سالاد سزار",
         "price": 145000,
         "category": "سالاد",
@@ -312,7 +312,7 @@
         "status": "active"
     },
     {
-        "id": 39,
+        "id": 40,
         "name": "سالاد فصل",
         "price": 120000,
         "category": "سالاد",
@@ -320,7 +320,7 @@
         "status": "active"
     },
     {
-        "id": 40,
+        "id": 41,
         "name": "سالاد ماکارونی",
         "price": 110000,
         "category": "سالاد",
@@ -328,7 +328,7 @@
         "status": "active"
     },
     {
-        "id": 41,
+        "id": 42,
         "name": "لیموناد",
         "price": 35000,
         "category": "نوشیدنی",
@@ -336,7 +336,7 @@
         "status": "active"
     },
     {
-        "id": 42,
+        "id": 43,
         "name": "نوشابه بطری کوکاکولا",
         "price": 30000,
         "category": "نوشیدنی",
@@ -344,7 +344,7 @@
         "status": "active"
     },
     {
-        "id": 43,
+        "id": 44,
         "name": "نوشابه قوطی کوکاکولا",
         "price": 30000,
         "category": "نوشیدنی",
@@ -352,7 +352,7 @@
         "status": "active"
     },
     {
-        "id": 44,
+        "id": 45,
         "name": "نوشابه قوطی پپسی",
         "price": 30000,
         "category": "نوشیدنی",
@@ -360,7 +360,7 @@
         "status": "active"
     },
     {
-        "id": 45,
+        "id": 46,
         "name": "سیب زمینی سرخ کرده",
         "price": 50000,
         "category": "مخلفات",
@@ -368,7 +368,7 @@
         "status": "active"
     },
     {
-        "id": 46,
+        "id": 47,
         "name": "ماست",
         "price": 25000,
         "category": "مخلفات",
@@ -376,16 +376,8 @@
         "status": "active"
     },
     {
-        "id": 47,
-        "name": "مخلفات",
-        "price": 40000,
-        "category": "مخلفات",
-        "image": "images/french-fries.png",
-        "status": "active"
-    },
-    {
         "id": 48,
-        "name": "سیب زمینی سرخ کرده",
+        "name": "مخلفات",
         "price": 50000,
         "category": "مخلفات",
         "image": "images/side-dishes.png",
