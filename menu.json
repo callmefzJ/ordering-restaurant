@@ -5,6 +5,6 @@
         "price": 180000,
         "category": "فست فود",
         "image": "images/roastChicken.png",
-        "status": "active",
+        "status": "active"
     }
 ]
